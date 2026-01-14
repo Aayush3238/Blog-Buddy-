@@ -1,0 +1,5 @@
+node_modules
+.env
+dist
+Client-VIte/vite-project/node_modules
+Client-VIte/vite-project/dist
