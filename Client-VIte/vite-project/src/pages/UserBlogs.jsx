@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import API from "../api.jsx";
 import BlogCard from "../components/BlogCard";
 const UserBlogs = () => {
   const [blogs, setBlogs] = useState([]);

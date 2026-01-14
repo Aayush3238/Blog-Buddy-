@@ -11,7 +11,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
+import API from "../api.jsx"
 
 export default function BlogCard({
   title,
