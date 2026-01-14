@@ -3,3 +3,5 @@ node_modules
 dist
 Client-VIte/vite-project/node_modules
 Client-VIte/vite-project/dist
+# frontend env
+Client-Vite/vite-project/.env

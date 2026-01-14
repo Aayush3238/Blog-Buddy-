@@ -5,34 +5,45 @@ const colors = require("colors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-//env config
+// Load env variables
 dotenv.config();
 
-//router import
+// DB connection
+connectDB();
+
+// Routes import
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 
-//mongodb connection
-connectDB();
-
-//rest objecct
+// App init
 const app = express();
 
-//middelwares
-app.use(cors());
+// Middlewares
+app.use(
+  cors({
+    origin: "*", // allow all (ok for now, restrict later)
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 app.use(express.json());
 app.use(morgan("dev"));
 
-//routes
+// Routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/blog", blogRoutes);
 
+// Health check (IMPORTANT for Render / Netlify testing)
+app.get("/", (req, res) => {
+  res.send("🚀 Blog API is running");
+});
+
 // Port
 const PORT = process.env.PORT || 8080;
-//listen
+
+// Server listen
 app.listen(PORT, () => {
   console.log(
-    `Server Running on ${process.env.DEV_MODE} mode port no ${PORT}`.bgCyan
-      .white
+    `Server running in ${process.env.NODE_ENV || "development"} mode on port ${PORT}`
+      .bgCyan.white
   );
 });
